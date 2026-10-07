@@ -6,7 +6,7 @@ const resultado = document.getElementById("resultado");
 const listaPessoas = document.getElementById("listaPessoas");
 const totalPessoas = document.getElementById("totalPessoas");
 
-// Carrega a lista salva no navegador (se existir)
+
 let pessoas = [];
 
 try {
@@ -19,11 +19,10 @@ function salvarPessoas() {
     try {
         localStorage.setItem("pessoasIMC", JSON.stringify(pessoas));
     } catch (erro) {
-        // Se o navegador bloquear o armazenamento, o app continua funcionando
+      
     }
 }
 
-// Evita que texto digitado vire HTML (segurança básica)
 function escaparHTML(texto) {
     const div = document.createElement("div");
     div.textContent = texto;
@@ -37,7 +36,7 @@ function classificar(imc) {
     return { texto: "Obesidade", chave: "obesidade" };
 }
 
-// Barra colorida com um marcador na posição do IMC (escala de 15 a 40)
+
 function gerarEscala(imc, mini) {
     const posicao = Math.min(Math.max(((imc - 15) / 25) * 100, 0), 100);
 
@@ -52,7 +51,7 @@ function gerarEscala(imc, mini) {
     `;
 }
 
-// Move os marcadores para o lugar certo (gera a animação de deslizar)
+
 function animarMarcadores() {
     requestAnimationFrame(function () {
         requestAnimationFrame(function () {
@@ -116,7 +115,7 @@ function mostrarPessoas() {
             <div class="vazio">Nenhuma pessoa cadastrada ainda.</div>
         `;
     } else {
-        // Monta tudo numa variável e escreve no DOM uma única vez
+       
         let html = "";
 
         pessoas.forEach(function (pessoa, index) {
@@ -158,7 +157,7 @@ function excluirPessoa(index) {
     mostrarPessoas();
 }
 
-// Um único "ouvinte" para todos os botões Excluir da lista
+
 listaPessoas.addEventListener("click", function (evento) {
     const botao = evento.target.closest(".excluir");
 
@@ -169,7 +168,6 @@ listaPessoas.addEventListener("click", function (evento) {
 
 btnCalcular.addEventListener("click", calcular);
 
-// Apertar Enter em qualquer campo também calcula
 [nome, peso, altura].forEach(function (campo) {
     campo.addEventListener("keydown", function (evento) {
         if (evento.key === "Enter") {
