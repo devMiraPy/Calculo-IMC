@@ -1,0 +1,394 @@
+:root {
+    --papel: #e9eef1;
+    --tinta: #0f3d3e;
+    --fita: #ffc93c;
+    --branco: #fbfcfc;
+    --suave: #587072;
+
+    --abaixo: #2f7be0;
+    --adequado: #1f9d6b;
+    --sobrepeso: #e39b00;
+    --obesidade: #d8432a;
+
+    --fonte-titulo: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+    --fonte-texto: "Figtree", "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    background-color: var(--papel);
+    color: var(--tinta);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- Cabeçalho com fita métrica ---------- */
+
+header {
+    background-color: var(--tinta);
+    color: var(--branco);
+    padding: 40px 0 0;
+}
+
+header h1 {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #b8d0d0;
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+.fita {
+    height: 22px;
+    background-color: var(--fita);
+    background-image:
+        repeating-linear-gradient(90deg, var(--tinta) 0 2px, transparent 2px 10px),
+        repeating-linear-gradient(90deg, var(--tinta) 0 2px, transparent 2px 50px);
+    background-size: 100% 9px, 100% 17px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+}
+
+main {
+    margin-top: 36px;
+    margin-bottom: 30px;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    background-color: var(--branco);
+    border: 2px solid var(--tinta);
+    border-radius: 6px 24px 6px 24px;
+    padding: 28px;
+    margin-bottom: 30px;
+    box-shadow: 7px 7px 0 var(--tinta);
+}
+
+.card h2 {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 26px;
+    margin-bottom: 4px;
+}
+
+.descricao {
+    color: var(--suave);
+    margin-bottom: 22px;
+}
+
+/* ---------- Formulário ---------- */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.campo label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.campo input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 2px solid var(--tinta);
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--tinta);
+    outline: none;
+}
+
+.campo input::placeholder {
+    color: #9bb0b0;
+}
+
+.campo input:focus {
+    box-shadow: 0 0 0 4px var(--fita);
+}
+
+.linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* ---------- Botões ---------- */
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--tinta);
+    border-radius: 999px;
+    background-color: var(--fita);
+    color: var(--tinta);
+    font-family: var(--fonte-titulo);
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--tinta);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--tinta);
+}
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--tinta);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--tinta);
+    outline-offset: 3px;
+}
+
+/* ---------- Resultado ---------- */
+
+.resultado {
+    margin-top: 24px;
+    padding: 20px;
+    border: 2px dashed var(--tinta);
+    border-radius: 12px;
+    background-color: var(--papel);
+    text-align: center;
+    color: var(--suave);
+}
+
+.resultado h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--tinta);
+}
+
+.resultado p {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.resultado.erro {
+    border-style: solid;
+    border-color: var(--obesidade);
+    color: var(--obesidade);
+    font-weight: 700;
+}
+
+.resultado .classe {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* ---------- Escala do IMC ---------- */
+
+.escala {
+    position: relative;
+    display: flex;
+    height: 12px;
+    margin: 6px 4px 22px;
+    border-radius: 999px;
+}
+
+.escala .faixa:first-child { border-radius: 999px 0 0 999px; }
+.escala .faixa:nth-child(4) { border-radius: 0 999px 999px 0; }
+
+.faixa { height: 100%; }
+.faixa.abaixo { width: 14%; background-color: var(--abaixo); }
+.faixa.adequado { width: 26%; background-color: var(--adequado); }
+.faixa.sobrepeso { width: 20%; background-color: var(--sobrepeso); }
+.faixa.obesidade { width: 40%; background-color: var(--obesidade); }
+
+.marcador {
+    position: absolute;
+    top: -7px;
+    width: 4px;
+    height: 26px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background-color: var(--tinta);
+    box-shadow: 0 0 0 2px var(--branco);
+    transition: left 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.escala.mini {
+    height: 8px;
+    margin: 14px 4px 6px;
+}
+
+.escala.mini .marcador {
+    top: -5px;
+    height: 18px;
+}
+
+/* ---------- Lista ---------- */
+
+.titulo-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--tinta);
+    color: var(--branco);
+}
+
+.contador span {
+    font-family: var(--fonte-titulo);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--fita);
+}
+
+.contador small {
+    font-size: 11px;
+}
+
+.vazio {
+    text-align: center;
+    padding: 30px;
+    color: var(--suave);
+    border: 2px dashed #b8c8c8;
+    border-radius: 12px;
+}
+
+.pessoa {
+    --cor: var(--suave);
+    border: 2px solid var(--tinta);
+    border-left: 12px solid var(--cor);
+    border-radius: 6px 16px 16px 6px;
+    padding: 16px 18px;
+    margin-top: 14px;
+    background-color: #fff;
+}
+
+.pessoa.abaixo { --cor: var(--abaixo); }
+.pessoa.adequado { --cor: var(--adequado); }
+.pessoa.sobrepeso { --cor: var(--sobrepeso); }
+.pessoa.obesidade { --cor: var(--obesidade); }
+
+.pessoa-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.pessoa h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.pessoa-info {
+    color: var(--suave);
+    font-size: 14px;
+}
+
+.imc {
+    font-family: var(--fonte-titulo);
+    font-size: 22px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.imc span {
+    font-family: var(--fonte-texto);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cor);
+    margin-left: 8px;
+}
+
+.excluir {
+    width: auto;
+    padding: 7px 16px;
+    background-color: #fff;
+    color: var(--obesidade);
+    border-color: var(--obesidade);
+    box-shadow: 3px 3px 0 var(--obesidade);
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.excluir:hover {
+    background-color: var(--obesidade);
+    color: #fff;
+    box-shadow: 1px 1px 0 var(--obesidade);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--suave);
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .linha {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .titulo-lista {
+        align-items: flex-start;
+    }
+
+    .contador {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marcador,
+    button {
+        transition: none;
+    }
+}

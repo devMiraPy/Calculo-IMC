@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Calculadora de IMC</h1>
+            <p>Cadastre uma pessoa e calcule seu Índice de Massa Corporal.</p>
+        </div>
+        <div class="fita" aria-hidden="true"></div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+
+            <h2>Cadastro</h2>
+            <p class="descricao">Informe os dados da pessoa.</p>
+
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Digite o nome">
+            </div>
+
+            <div class="linha">
+
+                <div class="campo">
+                    <label for="peso">Peso (kg)</label>
+                    <input type="number" id="peso" placeholder="Ex: 80" min="1" step="0.1">
+                </div>
+
+                <div class="campo">
+                    <label for="altura">Altura (cm)</label>
+                    <input type="number" id="altura" placeholder="Ex: 175" min="1">
+                </div>
+
+            </div>
+
+            <button id="btnCalcular">Calcular IMC</button>
+
+            <div id="resultado" class="resultado" aria-live="polite">
+                <span>O resultado aparecerá aqui.</span>
+            </div>
+
+        </section>
+
+        <section class="card">
+
+            <div class="titulo-lista">
+
+                <div>
+                    <h2>Pessoas cadastradas</h2>
+                    <p class="descricao">Histórico dos cálculos realizados.</p>
+                </div>
+
+                <div class="contador">
+                    <span id="totalPessoas">0</span>
+                    <small>pessoas</small>
+                </div>
+
+            </div>
+
+            <div id="listaPessoas">
+                <div class="vazio">Nenhuma pessoa cadastrada ainda.</div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Projeto desenvolvido para estudar JavaScript + DOM
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
